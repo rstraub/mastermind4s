@@ -16,9 +16,9 @@ object Main extends IOApp {
     } yield ExitCode.Success
   }
 
-  def parseCode(input: String): Code = {
+  def parseCode(input: String): Either[String, Code] = {
     val colors = input.map(parseColor).toList
-    Code(colors.head, colors(1), colors(2), colors(3))
+    Right(Code(colors.head, colors(1), colors(2), colors(3)))
   }
 
   private def parseColor(c: Char): Color = c match {

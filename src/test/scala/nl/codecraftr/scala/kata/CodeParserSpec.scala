@@ -14,8 +14,8 @@ class CodeParserSpec
   "parse" should "return a Code given a valid secret" in {
     val validInputs = Table(
       ("pegs", "code"),
-      ("RGBY", Code(Red, Green, Blue, Yellow)),
-      ("RGPO", Code(Red, Green, Purple, Orange))
+      ("RGBY", Right(Code(Red, Green, Blue, Yellow))),
+      ("RGPO", Right(Code(Red, Green, Purple, Orange)))
     )
 
     forAll(validInputs) { (pegs, code) =>
@@ -25,5 +25,9 @@ class CodeParserSpec
 
   it should "handle invalid secrets" in {
     pending
+    val invalidInputs = Table(
+      ("pegs", "code")
+//      ("R,G,B,Y", Code(Red, Green, Blue, Yellow)),
+    )
   }
 }
