@@ -7,8 +7,9 @@ import nl.codecraftr.scala.mastermind4s.core.{Code, Color}
 object CodeParser {
   private val FOUR_COLORS = "[RGBYOP]{4}".r
 
-  def parseCode(input: String): Either[String, Code] = {
-    if (!isValid(input)) return Left(s"Invalid input: $input")
+  def parseCode(input: String): Either[IllegalArgumentException, Code] = {
+    if (!isValid(input))
+      return Left(new IllegalArgumentException(s"Invalid input: $input"))
 
     val colors = input.map(parseColor).toList
     Right(core.Code(colors.head, colors(1), colors(2), colors(3)))

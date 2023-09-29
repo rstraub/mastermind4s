@@ -27,26 +27,26 @@ class CodeParserSpec
   // TODO: Return errors per input violation (code length, code characters)
   it should "return an error given invalid characters in secrets" in {
     val invalidInputs = Table(
-      ("pegs", "error"),
-      ("R,G,B,Y", Left("Invalid input: R,G,B,Y")),
-      ("ABCD", Left("Invalid input: ABCD")),
-      ("R G B Y", Left("Invalid input: R G B Y"))
+      ("pegs"),
+      ("R,G,B,Y"),
+      ("ABCD"),
+      ("R G B Y")
     )
 
-    forAll(invalidInputs) { (pegs, error) =>
-      CodeParser parseCode pegs shouldBe error
+    forAll(invalidInputs) { pegs =>
+      CodeParser.parseCode(pegs).isLeft shouldBe true
     }
   }
 
   it should "return an error given secrets of not 4 characters long" in {
     val invalidInputs = Table(
-      ("pegs", "error"),
-      ("RGB", Left("Invalid input: RGB")),
-      ("RGBYO", Left("Invalid input: RGBYO"))
+      ("pegs"),
+      ("RGB"),
+      ("RGBYO")
     )
 
-    forAll(invalidInputs) { (pegs, error) =>
-      CodeParser parseCode pegs shouldBe error
+    forAll(invalidInputs) { pegs =>
+      CodeParser.parseCode(pegs).isLeft shouldBe true
     }
   }
 }
