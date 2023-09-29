@@ -1,25 +1,19 @@
 package nl.codecraftr.scala.kata
 
 import cats.effect._
-import cats.implicits._
-import com.colofabrix.scala.figlet4s.catsio._
+import cats.effect.std.Console
 
 object Main extends IOApp {
-  def run(args: List[String]): IO[ExitCode] = {
-    val result =
-      for {
-        builder <- Figlet4s.builderF()
-        figure <- builder.render("Mastermind4s")
-        _ <- figure.print()
-      } yield ExitCode.Success
 
-    result.recover(handleError)
-  }
+  override def run(args: List[String]): IO[ExitCode] = {
+    for {
+      _ <- Console[IO].println("Mastermind4s")
+      _ <- Console[IO].println("============")
+      _ <- Console[IO].println("Player 1 enter your code:")
+      secret <- Console[IO].readLine
 
-  // Handle errors
-  private def handleError: PartialFunction[Throwable, ExitCode] = {
-    case error: Throwable =>
-      println(s"Error while working with Figlet: $error")
-      ExitCode.Error
+      _ <- Console[IO].println(s"$secret")
+
+    } yield ExitCode.Success
   }
 }
