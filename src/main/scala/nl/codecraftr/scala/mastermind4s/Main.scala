@@ -3,16 +3,15 @@ package nl.codecraftr.scala.mastermind4s
 import cats.effect._
 import cats.effect.std.Console
 import cats.effect.unsafe.implicits.global
+import nl.codecraftr.scala.mastermind4s.Banner.banner
 import nl.codecraftr.scala.mastermind4s.parsing.CodeParser
 
 import scala.annotation.tailrec
 
 object Main extends IOApp {
-
   override def run(args: List[String]): IO[ExitCode] = {
     for {
-      _ <- Console[IO].println("Mastermind4s")
-      _ <- Console[IO].println("============")
+      _ <- Console[IO].println(banner)
       _ <- Console[IO].println("Player 1 enter your code:")
       secret <- Console[IO].readLine
       // TODO configure the game using the secret
