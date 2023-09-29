@@ -15,7 +15,7 @@ class CodeParserSpec
     val validInputs = Table(
       ("pegs", "code"),
       ("R,G,B,Y", Code(Red, Green, Blue, Yellow)),
-      ("R,G,B,O", Code(Red, Green, Blue, Orange))
+      ("R,G,P,O", Code(Red, Green, Purple, Orange))
     )
 
     forAll(validInputs) { (pegs, code) =>

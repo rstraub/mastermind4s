@@ -27,5 +27,6 @@ object Main extends IOApp {
     case object Blue extends Color
     case object Yellow extends Color
     case object Orange extends Color
+    case object Purple extends Color
   }
 }
