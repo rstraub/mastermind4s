@@ -17,11 +17,14 @@ object Main extends IOApp {
   }
 
   def parseCode(input: String): Either[String, Code] = {
-    val isValid = "[RGBYOP]{4}".r.matches(input)
-    if (!isValid) return Left(s"Invalid input: $input")
+    if (!isValid(input)) return Left(s"Invalid input: $input")
 
     val colors = input.map(parseColor).toList
     Right(Code(colors.head, colors(1), colors(2), colors(3)))
+  }
+
+  private def isValid(input: String) = {
+    "[RGBYOP]{4}".r.matches(input)
   }
 
   private def parseColor(c: Char): Color = c match {
@@ -33,6 +36,5 @@ object Main extends IOApp {
     case 'P' => Purple
   }
 
-  case class Code(peg1: Color, peg2: Color, peg3: Color, peg4: Color)
 
 }

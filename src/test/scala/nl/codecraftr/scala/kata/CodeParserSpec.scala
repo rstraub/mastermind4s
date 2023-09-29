@@ -1,6 +1,5 @@
 package nl.codecraftr.scala.kata
 
-import nl.codecraftr.scala.kata.Main.Code
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
