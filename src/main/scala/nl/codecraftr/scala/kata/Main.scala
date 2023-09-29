@@ -1,10 +1,10 @@
 package nl.codecraftr.scala.kata
 
-object Main extends App {
-  def hello(name: String): String = name match {
-    case "dev" => "Hello, creator!"
-    case _     => "Hello, world!"
-  }
+import com.colofabrix.scala.figlet4s.unsafe._
 
-  println(hello("dev"))
+object Main extends App {
+  private val builder = Figlet4s.builder()
+  private val figure = builder.render("Mastermind4s")
+
+  figure.print()
 }
