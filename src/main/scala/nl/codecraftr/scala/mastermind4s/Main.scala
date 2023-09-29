@@ -34,8 +34,9 @@ object Main extends IOApp {
           _ <- Console[IO].println(s"Attempts left $attempts")
           _ <- Console[IO].println("Player 2 enter your guess:")
           guess <- Console[IO].readLine
+
           // TODO: validate the guess
-        } yield (guess == "done")
+        } yield guess == "done"
 
         if (result.unsafeRunSync()) IO("done") else go(attempts - 1)
       }
