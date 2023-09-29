@@ -23,6 +23,8 @@ class CodeParserSpec
     }
   }
 
+  // TODO: Add error types
+  // TODO: Return errors per input violation (code length, code characters)
   it should "return an error given invalid characters in secrets" in {
     val invalidInputs = Table(
       ("pegs", "error"),
