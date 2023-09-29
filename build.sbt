@@ -19,6 +19,7 @@ lazy val root = project
       scalaCheck,
       catsCore,
       mockito,
-      figlet4sCore
+      figlet4sCore,
+      figlet4sEffects
     )
   )
