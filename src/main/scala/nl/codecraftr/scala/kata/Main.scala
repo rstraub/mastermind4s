@@ -2,7 +2,7 @@ package nl.codecraftr.scala.kata
 
 import cats.effect._
 import cats.effect.std.Console
-import nl.codecraftr.scala.kata.Main.Color.{Blue, Green, Red, Yellow}
+import nl.codecraftr.scala.kata.Color._
 
 object Main extends IOApp {
 
@@ -12,21 +12,24 @@ object Main extends IOApp {
       _ <- Console[IO].println("============")
       _ <- Console[IO].println("Player 1 enter your code:")
       secret <- Console[IO].readLine
-      _ <- IO(parseSecret(secret))
+      _ <- IO(parseCode(secret))
     } yield ExitCode.Success
   }
 
-  def parseSecret(str: String): Code = Code(Red, Green, Blue, Yellow)
+  def parseCode(input: String): Code = {
+    val colors = input.map(parseColor).toList
+    Code(colors.head, colors(1), colors(2), colors(3))
+  }
+
+  private def parseColor(c: Char): Color = c match {
+    case 'R' => Red
+    case 'G' => Green
+    case 'B' => Blue
+    case 'Y' => Yellow
+    case 'O' => Orange
+    case 'P' => Purple
+  }
 
   case class Code(peg1: Color, peg2: Color, peg3: Color, peg4: Color)
 
-  sealed trait Color
-  object Color {
-    case object Red extends Color
-    case object Green extends Color
-    case object Blue extends Color
-    case object Yellow extends Color
-    case object Orange extends Color
-    case object Purple extends Color
-  }
 }

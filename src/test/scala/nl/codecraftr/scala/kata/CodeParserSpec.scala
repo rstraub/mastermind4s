@@ -1,10 +1,10 @@
 package nl.codecraftr.scala.kata
 
 import nl.codecraftr.scala.kata.Main.Code
-import nl.codecraftr.scala.kata.Main.Color._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
+import nl.codecraftr.scala.kata.Color._
 
 class CodeParserSpec
     extends AnyFlatSpec
@@ -14,12 +14,16 @@ class CodeParserSpec
   "parse" should "return a Code given a valid secret" in {
     val validInputs = Table(
       ("pegs", "code"),
-      ("R,G,B,Y", Code(Red, Green, Blue, Yellow)),
-      ("R,G,P,O", Code(Red, Green, Purple, Orange))
+      ("RGBY", Code(Red, Green, Blue, Yellow)),
+      ("RGPO", Code(Red, Green, Purple, Orange))
     )
 
     forAll(validInputs) { (pegs, code) =>
-      Main parseSecret pegs shouldBe code
+      Main parseCode pegs shouldBe code
     }
+  }
+
+  it should "handle invalid secrets" in {
+    pending
   }
 }
