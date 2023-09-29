@@ -1,4 +1,4 @@
-package nl.codecraftr.scala.kata
+package nl.codecraftr.scala.mastermind4s.core
 
 sealed trait Color
 

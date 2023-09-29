@@ -1,9 +1,10 @@
-package nl.codecraftr.scala.kata
+package nl.codecraftr.scala.mastermind4s
 
+import nl.codecraftr.scala.mastermind4s.core.Code
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
-import nl.codecraftr.scala.kata.Color._
+import nl.codecraftr.scala.mastermind4s.core.Color._
 
 class CodeParserSpec
     extends AnyFlatSpec
