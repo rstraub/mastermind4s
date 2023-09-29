@@ -1,10 +1,10 @@
-package nl.codecraftr.scala.mastermind4s
+package nl.codecraftr.scala.mastermind4s.parsing
 
 import nl.codecraftr.scala.mastermind4s.core.Code
+import nl.codecraftr.scala.mastermind4s.core.Color._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
-import nl.codecraftr.scala.mastermind4s.core.Color._
 
 class CodeParserSpec
     extends AnyFlatSpec
@@ -19,7 +19,7 @@ class CodeParserSpec
     )
 
     forAll(validInputs) { (pegs, code) =>
-      Main parseCode pegs shouldBe code
+      CodeParser parseCode pegs shouldBe code
     }
   }
 
@@ -32,7 +32,7 @@ class CodeParserSpec
     )
 
     forAll(invalidInputs) { (pegs, error) =>
-      Main parseCode pegs shouldBe error
+      CodeParser parseCode pegs shouldBe error
     }
   }
 
@@ -44,7 +44,7 @@ class CodeParserSpec
     )
 
     forAll(invalidInputs) { (pegs, error) =>
-      Main parseCode pegs shouldBe error
+      CodeParser parseCode pegs shouldBe error
     }
   }
 }
