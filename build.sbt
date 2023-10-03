@@ -19,6 +19,9 @@ lazy val root = project
       scalaCheck,
       catsCore,
       catsEffects,
-      mockito
+      mockito,
+      logging,
+      logback,
+      pureConfig
     )
   )

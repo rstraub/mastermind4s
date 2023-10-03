@@ -2,13 +2,16 @@ package nl.codecraftr.scala.mastermind4s
 
 import cats.effect._
 import cats.effect.std.Console
-import nl.codecraftr.scala.mastermind4s.Banner.banner
 import nl.codecraftr.scala.mastermind4s.parsing.CodeParser
+import pureconfig.ConfigSource
+import pureconfig.generic.auto._
 
 object Main extends IOApp {
   override def run(args: List[String]): IO[ExitCode] = {
+    val config = ConfigSource.default.loadOrThrow[AppConf]
+
     val result = for {
-      _ <- IO.println(banner)
+      _ <- IO.println(config.banner.value)
       _ <- IO.println("Player 1 enter your code:")
       secret <- IO.readLine
       // TODO configure the game using the secret
