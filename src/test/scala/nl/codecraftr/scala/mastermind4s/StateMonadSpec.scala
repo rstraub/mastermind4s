@@ -5,8 +5,9 @@ import State._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class StateSpec extends AnyFlatSpec with Matchers {
-  private val inc = State[Int, String] { num =>
+class StateMonadSpec extends AnyFlatSpec with Matchers {
+  type Counter[A] = State[Int, A]
+  private val inc: Counter[String] = State[Int, String] { num =>
     val updated = num + 1
     (updated, s"number is now $updated")
   }
