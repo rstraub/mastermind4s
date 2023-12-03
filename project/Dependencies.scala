@@ -13,7 +13,7 @@ object Dependencies {
 
   // Logging
   lazy val logging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5"
-  lazy val logback = "ch.qos.logback" % "logback-classic" % "1.4.7"
+  lazy val logback = "ch.qos.logback" % "logback-classic" % "1.4.14"
 
   // Config
   lazy val pureConfig = "com.github.pureconfig" %% "pureconfig" % "0.17.4"
